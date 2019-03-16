@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        .update{
+            width: 40px;
+            background-color: deepskyblue;
+            border: none;
+            color: white;
+            padding: 3px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 8px;
+            border-radius: 15%;
+            float: right;
+        }
+        .delete{
+            width: 40px;
+            background-color: deepskyblue;
+            border: none;
+            color: white;
+            padding: 3px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 8px;
+            border-radius: 15%;
+            float: left;
+        }
+        .look{
+            width: 40px;
+            background-color: deepskyblue;
+            border: none;
+            color: white;
+            padding: 3px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 8px;
+            border-radius: 15%;
+            float: left;
+        }
+        .inp{
+            line-height: 10px;
+            padding-top: 10px;
+            margin-top: 10px;
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="index_font">后台首页</div>
+
+<div th:text="${msg}"></div>
+<div th:text="${success}"></div>
+<table border="1">
+    <tr>
+        <td class="inp">id</td>
+        <td class="inp">title</td>
+        <td class="inp">bt</td>
+        <td class="inp">content</td>
+        <td class="inp">ower</td>
+        <td class="inp">create_time</td>
+        <td class="inp">管理</td>
+    </tr>
+</table>
+    <div  th:each="item:${userinfo}">
+
+        <table border="1">
+            <tr>
+                <td class="inp" th:text="${item.id}"></td>
+                <td class="inp" th:text="${item.title}"></td>
+                <td class="inp" th:text="${item.bt}"></td>
+                <td class="inp">相关内容。。。。</td>
+                <td class="inp" th:text="${item.ower}"></td>
+                <td class="inp" th:text="${item.create_time}"></td>
+                <td >
+                    <a th:href="@{/user/update(id=${item.id})}" class="update">修改</a>
+                    <a th:href="@{/user/delete(id=${item.id})}" class="delete">删除</a>
+                    <a th:href="@{/user/look(id=${item.id})}" class="look">查看</a>
+                    <a th:href="@{/user/creat(id=${item.id})}" class="look">增加</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<a href="/user/creat?id=${item.id}" class="look">增加</a>
+
+</body>
+</html>

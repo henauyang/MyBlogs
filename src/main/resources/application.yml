@@ -1,0 +1,26 @@
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+#  mvc:
+#    view:
+#      suffix: .jsp
+#      prefix: /WEB-INF/jsp/
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+
+#分页配置
+pagehelper:
+ helperDialect: mysql
+ reasonable: true
+ supportMethodsArguments: true
+ params: count=countSql
+
+
+
+

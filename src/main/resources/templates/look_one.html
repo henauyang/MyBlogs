@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        .div{
+            text-align: center;
+            /*background-color: deepskyblue;*/
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 1200px;
+            border:1px solid #DDDDDD;
+        }
+        .tijiao{
+            width: 100px;
+            background-color: deepskyblue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 50px;
+        }
+        .title{
+            font-size: 30px;
+            padding-top: 40px;
+            padding-bottom: 30px;
+        }
+        .middle{
+            width: 90%;
+            height: 50px;
+            background-color: #F5F5F5;
+            margin: 0 auto;
+        }
+        .time{
+            float: left;
+            padding-top: 15px;
+            padding-left: 100px;
+        }
+        .bt{
+            float: left;
+            padding-top: 15px;
+            padding-left: 100px;
+        }
+        .ower{
+            padding-top: 15px;
+            padding-left: 100px;
+        }
+        .content{
+            width: 70%;
+            padding-left: 15%;
+            padding-top: 40px;
+            padding-bottom: 100px;
+        }
+        .img{
+            width: 100%;
+            height: 350px;
+        }
+    </style>
+</head>
+<body>
+<div th:text="${userinfo.id}"></div>
+<div class="div">
+    <form action="/user/findAll" method="post">
+        <div ><img class="img" src="/photo/banner.png"/></div>
+        <div type="text" class="title" th:text="${userinfo.title}"></div>
+        <div class="middle">
+            <div type="text" class="time"  th:text="'时间：'+${userinfo.create_time}"></div>
+            <div type="text" class="bt"  th:text="'新闻标题：'+${userinfo.bt}"></div>
+            <div type="text" class="ower"  th:text="'新闻发表者：'+${userinfo.ower}"></div>
+        </div>
+        <div class="content" type="text" th:text="'新闻内容：&nbsp;&nbsp;&nbsp;&nbsp;'+${userinfo.content}"></div>
+        <input type="submit" value="返回" class="tijiao"/>
+
+    </form>
+</div>
+</body>
+</html>

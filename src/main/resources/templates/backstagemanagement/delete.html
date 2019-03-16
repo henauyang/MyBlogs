@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>删除</title>
+    <style>
+        .div{
+            padding-left: 20%;
+            padding-top: 10%;
+        }
+        div form input{
+            padding-top: 10px;
+            margin-top: 10px;
+            width: 40%;
+        }
+        .delete{
+            width: 100px;
+            background-color: deepskyblue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 50px;
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+<div th:text="${msg}"></div>
+<div th:text="${userinfo.id}"></div>
+<div class="div">
+    <form action="/user/deleteUserByUserId" method="post">
+        <input style="display: none" type="text" name="id" th:value="${userinfo.id}"/><br/>
+        新闻头：<input type="text" name="title" th:value="${userinfo.title}"/><br/>
+        新闻标题：<input type="text" name="bt" th:value="${userinfo.bt}"/><br/>
+        新闻内容：<input class="content" type="text" name="content" th:value="${userinfo.content}"/><br/>
+        新闻发表者：<input type="text" name="ower" th:value="${userinfo.ower}"/><br/>
+        <input type="submit" value="删除" class="delete"/>
+    </form>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册</title>
+    <style>
+        .div{
+            padding-left: 20%;
+            padding-top: 10%;
+        }
+        div form input{
+            padding-top: 10px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .tijiao{
+            width: 100px;
+            background-color: deepskyblue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 50px;
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="div">
+    <form action="/UserInstall/install" method="post">
+        <table>
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" name="name"/></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="text" name="password"/></td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <td>真实姓名：</td>
+                <td><input type="text" name="realName"/></td>
+            </tr>
+            <tr>
+                <td>生日：</td>
+                <td><input id="birth" type="text" name="birth" class="transform"/></td>
+            </tr>
+            <tr>
+                <td>电子邮件：</td>
+                <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+                <td>电话：</td>
+                <td><input type="text" name="phone" /></td>
+            </tr>
+            <tr>
+                <td>地址：</td>
+                <td><input type="text" name="address"/></td>
+            </tr>
+            <tr>
+                <td>邮编：</td>
+                <td><input type="text" name="postcode"/></td>
+            </tr>
+            <tr>
+                <td>验证码：</td>
+                <td><input type="text" name="code"/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="注册" class="tijiao"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

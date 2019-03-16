@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        .article{
+            width: 40%;
+            border-bottom:1px solid #000000;
+        }
+        .inptime{
+            padding-left: 30px;
+        }
+        .look{
+            float: left;
+            /*padding-left: 30px;*/
+        }
+        .index_font{
+           text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="index_font">首页</div>
+<div th:text="${avg}"></div>
+<div th:text="${msg}"></div>
+<!--<div th:text="${page}"></div>-->
+<div align="center">
+    <div class="">
+        <div style="float: left;padding-left:30%">新闻公告</div>
+        <div><a th:href="@{/user/findAll(pageNum=${pageInfo.pagenum}+1)}">更多>></a></div>
+    </div>
+    <div class="article" th:each="user:${pageInfo.records}">
+
+        <div>
+            <div class="look"><a th:href="@{/user/look_one(id=${user.id})}" th:text="${user.title}"></a> </div>
+            <div class="inptime" th:text="${user.create_time}"></div>
+        </div>
+    </div>
+    <p>当前 <span th:text="${pageInfo.pagenum}"></span> 页,总 <span th:text="${pageInfo.totalpage}"></span> 页,共 <span th:text="${pageInfo.totalrecords}"></span> 条记录</p>
+    <a th:href="@{/user/findAll}">首页</a>
+    <a th:if="${pageInfo.pagenum gt 1}" th:href="@{/user/findAll(pageNum=${pageInfo.pagenum}-1)}">上一页</a>
+    <a th:if="${pageInfo.pagenum lt pageInfo.totalpage}" th:href="@{/user/findAll(pageNum=${pageInfo.pagenum}+1)}">下一页</a>
+    <a th:href="@{/user/findAll(pageNum=${pageInfo.totalpage})}">尾页</a>
+</div>
+</body>
+</html>
