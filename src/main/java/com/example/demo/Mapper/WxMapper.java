@@ -2,44 +2,22 @@ package com.example.demo.Mapper;
 
 import com.example.demo.pojo.Wx;
 
+import java.util.Date;
 import java.util.List;
 
 public interface WxMapper {
-    /**
-     * 列出区域列表
-     *
-     * @return areaList
-     */
-    List<Wx> queryArea();
 
-    /**
-     * 根据Id列出具体区域
-     *
-     * @return area
-     */
-    Wx queryAreaById(int areaId);
+    List<Wx> findAll();
 
-    /**
-     * 插入区域信息
-     *
-     * @param area
-     * @return
-     */
-    int insertArea(Wx area);
 
-    /**
-     * 更新区域信息
-     *
-     * @param area
-     * @return
-     */
-    int updateArea(Wx area);
+    Wx queryWxById(int wxId);
 
-    /**
-     * 删除区域信息
-     *
-     * @param areaId
-     * @return
-     */
-    int deleteArea(int areaId);
+
+    void insertWx(String wxName,Integer priority,Date createTime,Date lastEditTime);
+
+
+    void updateUser(Integer wxId,String wxName,Integer priority,Date lastEditTime);
+
+
+    void deleteWx(int wxId);
 }

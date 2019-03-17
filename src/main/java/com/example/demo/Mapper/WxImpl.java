@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.Date;
 import java.util.List;
 
 public class WxImpl implements WxMapper{
@@ -13,28 +14,34 @@ public class WxImpl implements WxMapper{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Wx> queryArea() {
+    public List<Wx> findAll() {
         List <Wx> wxList= jdbcTemplate.query("select   *  from tb_area  order by  priority desc",new BeanPropertyRowMapper<>(Wx.class));
         return wxList;
     }
-
     @Override
-    public Wx queryAreaById(int areaId) {
-        return null;
+    public Wx queryWxById(int wxId) {
+        List<Wx> wxList = jdbcTemplate.query("select   *  from tb_area where wxId = ?",new Object[]{wxId}, new BeanPropertyRowMapper<>(Wx.class));
+        if (wxList!=null&&wxList.size()>0){
+            Wx wx = wxList.get(0);
+            return wx;
+        }else {
+            return null;
+        }
     }
 
     @Override
-    public int insertArea(Wx area) {
-        return 0;
+    public void insertWx(String wxName, Integer priority, Date createTime, Date lastEditTime) {
+        jdbcTemplate.update("INSERT INTO tb_area(wxName,priority,createTime,lastEditTime) VALUES (?,?,?,?)", wxName, priority, createTime, lastEditTime);
     }
 
     @Override
-    public int updateArea(Wx area) {
-        return 0;
+    public void updateUser(Integer wxId,String wxName, Integer priority, Date lastEditTime) {
+        jdbcTemplate.update("UPDATE tb_area SET wxName = ?,priority=?,lastEditTime = ?WHERE wxId =?",  wxName,priority,lastEditTime,wxId);
     }
 
     @Override
-    public int deleteArea(int areaId) {
-        return 0;
+    public void deleteWx(int wxId) {
+        jdbcTemplate.update("delete from tb_area where wxId=?",wxId);
     }
+
 }
