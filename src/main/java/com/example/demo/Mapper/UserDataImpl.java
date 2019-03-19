@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
-@Repository//仓库
+@Repository//实现类，实现接口
 public class UserDataImpl implements UserDataMapper {
     @Autowired
     private JdbcTemplate jdbcTemplate;
