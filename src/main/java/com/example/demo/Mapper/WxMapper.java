@@ -13,11 +13,11 @@ public interface WxMapper {
     Wx queryWxById(int wxId);
 
 
-    void insertWx(String wxName,Integer priority,Date createTime,Date lastEditTime);
+    boolean insertWx(Wx wx);
 
 
-    void updateUser(Integer wxId,String wxName,Integer priority,Date lastEditTime);
+    boolean updateWx(Wx wx);
 
 
-    void deleteWx(int wxId);
+    boolean deleteWx(int wxId);
 }

@@ -22,16 +22,20 @@ public class WxService {
         return wxMapper.queryWxById(wxId);
     }
 
-    public void insertWx(String wxName, Integer priority, Date createTime, Date lastEditTime) {
-        wxMapper.insertWx(wxName, priority, createTime, lastEditTime);
+    public boolean insertWx(Wx wx) {
+        wxMapper.insertWx(wx);
+        return false;
     }
 
-    public void updateUser(Integer wxId, String wxName, Integer priority, Date lastEditTime) {
-        wxMapper.updateUser(wxId, wxName, priority, lastEditTime);
+    public boolean updateWx(Wx wx) {
+        wxMapper.updateWx(wx);
+        return false;
     }
 
-    public void deleteWx(int wxId) {
+    public boolean deleteWx(int wxId) {
         wxMapper.deleteWx(wxId);
+        return false;
+
     }
 
 

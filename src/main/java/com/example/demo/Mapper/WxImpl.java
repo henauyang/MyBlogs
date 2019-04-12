@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -32,18 +30,21 @@ public class WxImpl implements WxMapper{
     }
 
     @Override
-    public void insertWx(String wxName, Integer priority, Date createTime, Date lastEditTime) {
-        jdbcTemplate.update("INSERT INTO tb_area(wxName,priority,createTime,lastEditTime) VALUES (?,?,?,?)", wxName, priority, createTime, lastEditTime);
+    public boolean insertWx(Wx wx) {
+        jdbcTemplate.update("INSERT INTO tb_area(wxName,priority,createTime,lastEditTime) VALUES (?,?,?,?)", wx.getWxName(), wx.getPriority(), wx.getCreateTime(), wx.getLastEditTime());
+        return false;
     }
 
     @Override
-    public void updateUser(Integer wxId,String wxName, Integer priority, Date lastEditTime) {
-        jdbcTemplate.update("UPDATE tb_area SET wxName = ?,priority=?,lastEditTime = ?WHERE wxId =?",  wxName,priority,lastEditTime,wxId);
+    public boolean updateWx(Wx wx) {
+        jdbcTemplate.update("UPDATE tb_area SET wxName = ?,priority=?,lastEditTime = ?WHERE wxId =?", wx.getWxName(), wx.getPriority(), wx.getLastEditTime(),wx.getWxId());
+        return false;
     }
 
     @Override
-    public void deleteWx(int wxId) {
+    public boolean deleteWx(int wxId) {
         jdbcTemplate.update("delete from tb_area where wxId=?",wxId);
+        return false;
     }
 
 }
